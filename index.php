@@ -15,8 +15,18 @@ require_once("config.php");
 //echo json_encode($search);
 
 //procura login e senha iguais
-$usuario = new Usuario();
-$usuario->login('joao','1234567');
-echo $usuario;
+//$usuario = new Usuario();
+//$usuario->login('joao','123456');
+//echo $usuario;
 
+//insere um aluno no banco de dados
+$aluno = new Usuario();
+$aluno->setLogin('alunoTeste');
+$aluno->setSenha('senhaaluno');
+$aluno->insert();
+echo $aluno;
+
+
+
+//var_dump($aluno);
 ?>
