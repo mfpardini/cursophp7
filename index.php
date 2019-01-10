@@ -16,21 +16,28 @@ require_once("config.php");
 
 //procura login e senha iguais
 //$usuario = new Usuario();
-//$usuario->login('joao','123456');
+//$usuario->login('jorge','fsda56fsd');
 //echo $usuario;
 
 //insere um aluno no banco de dados
-//$aluno = new Usuario();
-//$aluno->setLogin('alunoTeste');
+//$aluno = new Usuario("teste20", 'senhapadrao20');
+//$aluno->setLogin('henri');
 //$aluno->setSenha('senhaaluno');
 //$aluno->insert();
 //echo $aluno;
 
-//update de um usuário
-$usuario = new Usuario();
-$usuario->loadById(6);
-$usuario->update('paulo', 'romanos');
-echo $usuario;
 
-//var_dump($aluno);
+//update de um usuário
+//$usuario = new Usuario();
+//$usuario->loadById(6);
+//$usuario->update('paulo', 'romanos');
+//echo $usuario;
+
+//delete de usuarios da tabela
+$user = new Usuario();
+$user->loadById(19);
+$user->delete();
+echo $user;
+
+
 ?>

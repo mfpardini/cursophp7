@@ -39,9 +39,9 @@ class Usuario {
 		$this->dt_cadastro = $value;
 	}
 
-	public function __construct($login ="", $senha =""){
+	public function __construct($login = "", $password = ""){
 		$this->setLogin($login);
-		$this->setSenha($senha);
+		$this->setSenha($password);
 	}
 
 	public function loadById($id) {
@@ -52,7 +52,7 @@ class Usuario {
 		if (count($results) > 0) {
 			$this->setDados($results[0]);
 		}
-
+		echo "Usuário ".$this->getLogin()." foi carregado com sucesso!<br/>";
 	}
 
 	public static function getList(){
@@ -94,6 +94,9 @@ class Usuario {
 
 		if (count($results) > 0) {
 			$this->setDados($results[0]);
+
+		} else {
+			echo "Ocorreu um erro";
 		}
 	}
 
@@ -103,12 +106,24 @@ class Usuario {
 
 		$sql = new Sql();
 
-		$sql->query("UPDATE tb_usuario SET login = :LOGIN, senha = :SENHA WHERE idusuario = :ID", array(
+		$sql->query("UPDATE tb_usuarios SET login = :LOGIN, senha = :SENHA WHERE idusuario = :ID", array(
 			':LOGIN'=>$this->getLogin(),
 			':SENHA'=>$this->getSenha(),
 			':ID'=>$this->getIdusuario()
 		));
+	}
 
+	public function delete() {
+		$sql = new Sql();
+		$sql->query("DELETE FROM tb_usuarios WHERE idusuario = :ID", array(
+			':ID'=>$this->getIdusuario()
+		));
+		$this->setIdusuario(null);
+		$this->setLogin(null);
+		$this->setSenha(null);
+		$this->setDt_cadastro(new DateTime());
+
+		echo "Usuário deletado com sucesso.<br/>";
 	}
 
 	private function setDados($dados){
