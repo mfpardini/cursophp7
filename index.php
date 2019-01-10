@@ -20,13 +20,17 @@ require_once("config.php");
 //echo $usuario;
 
 //insere um aluno no banco de dados
-$aluno = new Usuario();
-$aluno->setLogin('alunoTeste');
-$aluno->setSenha('senhaaluno');
-$aluno->insert();
-echo $aluno;
+//$aluno = new Usuario();
+//$aluno->setLogin('alunoTeste');
+//$aluno->setSenha('senhaaluno');
+//$aluno->insert();
+//echo $aluno;
 
-
+//update de um usuário
+$usuario = new Usuario();
+$usuario->loadById(6);
+$usuario->update('paulo', 'romanos');
+echo $usuario;
 
 //var_dump($aluno);
 ?>

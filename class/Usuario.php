@@ -97,6 +97,20 @@ class Usuario {
 		}
 	}
 
+	public function update($newlogin, $newsenha){
+		$this->setLogin($newlogin);
+		$this->setSenha($newsenha);
+
+		$sql = new Sql();
+
+		$sql->query("UPDATE tb_usuario SET login = :LOGIN, senha = :SENHA WHERE idusuario = :ID", array(
+			':LOGIN'=>$this->getLogin(),
+			':SENHA'=>$this->getSenha(),
+			':ID'=>$this->getIdusuario()
+		));
+
+	}
+
 	private function setDados($dados){
 		$this->setIdusuario($dados['idusuario']);
 		$this->setLogin($dados['login']);
